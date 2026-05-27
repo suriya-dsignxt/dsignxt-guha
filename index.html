@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guha Realty - Dynamic Landing Page Preview</title>
+    <meta name="description" content="Interactive, high-fidelity full screen landing page preview for Guha Realty. Fully optimized and responsive.">
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Progress Bar -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- Main Site Container -->
+    <main class="site-container">
+        <div class="slices-wrapper">
+            <img src="slices/slice_0.jpg" alt="Guha Realty section 1" loading="eager" class="site-slice" width="1920" height="2000" id="slice-0">
+            <img src="slices/slice_1.jpg" alt="Guha Realty section 2" loading="eager" class="site-slice" width="1920" height="2000" id="slice-1">
+            <img src="slices/slice_2.jpg" alt="Guha Realty section 3" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-2">
+            <img src="slices/slice_3.jpg" alt="Guha Realty section 4" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-3">
+            <img src="slices/slice_4.jpg" alt="Guha Realty section 5" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-4">
+            <img src="slices/slice_5.jpg" alt="Guha Realty section 6" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-5">
+            <img src="slices/slice_6.jpg" alt="Guha Realty section 7" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-6">
+            <img src="slices/slice_7.jpg" alt="Guha Realty section 8" loading="lazy" class="site-slice" width="1920" height="2000" id="slice-7">
+            <img src="slices/slice_8.jpg" alt="Guha Realty section 9" loading="lazy" class="site-slice" width="1920" height="1456" id="slice-8">
+        </div>
+    </main>
+
+    <!-- Floating Actions Container -->
+    <div class="floating-actions">
+        <!-- Scroll status info badge -->
+        <div class="info-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Guha Realty Preview</span>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <button id="back-to-top" aria-label="Scroll to top" title="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Interactive script to manage scroll behaviors -->
+    <script>
+        // Update Scroll Progress Bar
+        const progressBar = document.getElementById('progress-bar');
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            progressBar.style.width = scrolled + '%';
+
+            // Show or hide back to top button
+            if (winScroll > 600) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll to top
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
